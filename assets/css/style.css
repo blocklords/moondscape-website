@@ -1454,6 +1454,12 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .footer_bottom_inner {
   position: relative;
 }
+
+.footer_bottom_inner .copyright_right span {
+  color: #fff;
+  font-weight: 600;
+}
+
 @media only screen and (max-width: 767px) {
   .footer_bottom_inner {
     -webkit-box-orient: vertical;

@@ -371,8 +371,8 @@ figure {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background: rgb(27, 77, 87);
-  border: 2px solid rgb(37, 144, 165);
+  background: #1B4D57;
+  border: 2px solid #2590A5;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2880,7 +2880,7 @@ section.error_section {
 }
 
 .error_section .about_desc a {
-  color:rgb(37, 144, 165);
+  color:#2590A5;
   text-decoration: underline;
 }
 

@@ -5466,6 +5466,12 @@ section.error_section {
   }
 }
 
+.partners_section h2 {
+  font-family: 'inversionz-unboxed';
+  text-align: center;
+  margin-bottom: 48px;
+}
+
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .partners_section.mb-125 {
     margin-bottom: 100px;
@@ -5486,6 +5492,7 @@ section.error_section {
   transform: scale(.9, .9);
   transition-timing-function: cubic-bezier(.32,2,.55,.27);
 }
+
 
 .match_upcoming_thumb {
   background: #09002a;

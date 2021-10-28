@@ -2905,7 +2905,7 @@ section.error_section {
 }
 
 .error_title {
-  margin-bottom: 64px;
+  margin: 128px 0px 64px 0px;
 }
 @media only screen and (max-width: 767px) {
   .error_title {
@@ -5467,14 +5467,24 @@ section.error_section {
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  .match_details_section.mb-125 {
-    margin-bottom: 68px;
+  .partners_section.mb-125 {
+    margin-bottom: 100px;
   }
 }
 @media only screen and (max-width: 767px) {
-  .match_details_section.mb-125 {
-    margin-bottom: 48px;
+  .partners_section.mb-125 {
+    margin-bottom: 80px;
   }
+}
+.partners_row div {
+  transition: .5s;
+  transition-timing-function: cubic-bezier(.32,2,.55,.27);
+  padding: 30px;
+}
+
+.partners_row div:hover {
+  transform: scale(.9, .9);
+  transition-timing-function: cubic-bezier(.32,2,.55,.27);
 }
 
 .match_upcoming_thumb {

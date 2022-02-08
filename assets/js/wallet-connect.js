@@ -23,7 +23,7 @@ async function fetchAccountData() {
   window.selectedAccount = accounts[0];
   localStorage.setItem('connected', chainId);
   console.log('pathname:',window.location.pathname )
-  if(window.location.pathname === '/walletConnect.html'){
+  if(window.location.pathname.includes('/walletConnect.html')){
     window.location = 'connected.html';
   }
 

@@ -7066,3 +7066,444 @@ section.error_section {
   top: 0;
   left: 0;
 }
+
+.header_logo_position {
+  margin-top: 33px;
+  margin-left: 48px;
+  display: inline-block;
+}
+
+.wallet_connect {
+  width: 676px;
+  height: 575.5px;
+
+  text-align: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: top center;
+  background-size: cover;
+  position: fixed;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.wallet_connect_header {
+  font-family: "Inversionz-Unboxed", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 50px;
+  line-height: 41px;
+  text-align: center;
+  color: #FFFFFF;
+  text-shadow: 2px 2px 0px #69E6EC;
+  margin-bottom: 70px;
+}
+
+.wallet_container {
+  width: 438px;
+  height: 147px;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-sizing: border-box;
+  margin-bottom: 14px;
+}
+
+.metamask_image {
+
+}
+
+.walletconnect_image {
+
+}
+
+.wallet_connect_text {
+  font-family: "Exo", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 37px;
+}
+
+.header_wallet {
+  width: 243px;
+  height: 50px;
+  margin-top: 39px;
+  margin-right: 43px;
+  float: right;
+  cursor: pointer;
+  background: url("../img/connected/wallet-bg.png");
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.header_wallet:hover {
+  background: url("../img/connected/disconnect-wallet.png");
+  transition: background .3s;
+}
+
+.header_wallet:hover .wallet_mscp {
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+.header_wallet:hover .wallet_balance {
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+.header_wallet:hover .wallet_moonbeam {
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+.wallet_mscp {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+}
+
+.wallet_balance {
+  font-family: "Exo", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 27px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.wallet_moonbeam {
+  width: 32px;
+  height: 25px;
+}
+
+.marginFromTop {
+  margin-top:291px;
+}
+
+.city_nft_search_wrapper {
+  width: 431px;
+  height: 436px;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.city_nft_search_image{
+  width: 126px;
+  height: 126px;
+  background: url("../img/connected/city-nft-search-image.png");
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-sizing: border-box;
+  margin-top:63px;
+}
+
+.loading {
+  border: 3px solid rgba(255,255,255,.5);;
+  border-radius: 50%;
+  border-top: 3px solid #69E6EC;
+  border-right: 3px solid #69E6EC;
+  border-bottom: 3px solid #69E6EC;
+  width: 26px;
+  height: 26px;
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+  margin-top: 27px;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.city_nft_search_main_text {
+  width: 297px;
+  font-family: "Inversionz-Unboxed", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 29px;
+  text-align: center;
+  
+  color: #FFFFFF;
+  margin-top: 12px;
+}
+
+.city_nft_search_footer_text {
+  width: 340px;
+  font-family: "Exo", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  
+  color: #FFFFFF;
+  margin-top: 20px;
+}
+
+.stake_mscp {
+  width: 424.88px;
+  height: 436px;
+
+  text-align: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: top center;
+  background-size: cover;
+  float: right;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stake_mscp_header {
+  font-family: "Inversionz-Unboxed", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 50px;
+  line-height: 41px;
+  text-align: center;
+  color: #FFFFFF;
+  text-shadow: 2px 2px 0px #69E6EC;
+  margin-top: 47px;
+}
+
+.stake_mscp_main {
+  margin-top:61px;
+}
+
+.stake_mscp_mscp {
+  width: 54px;
+  height: 54px;
+  display: inline-block;
+}
+
+.stake_mscp_amount {
+  display: inline-block;
+  margin-left: 17px;
+  font-family: "Exo", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 40px;
+  text-align: center;
+  color: #FFFFFF;
+  vertical-align: middle;
+}
+
+.stake_mscp_btn_disabled {
+  margin-top: 61px;
+}
+
+.stake_mscp_btn_disabled .btn.btn-link {
+  width: 222px;
+  height: 60px;
+  background: url(../img/connected/btn-disabled.png);
+  font-family: "Exo", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 60px;
+  text-align: center;
+  color: #FFFFFF;
+  cursor: not-allowed;
+}
+
+.stake_mscp_footer_text {
+  width: 335px;
+  margin-top: 20px;
+  font-family: "Exo", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.play_game_btn_disabled {
+  width: 222px;
+  height: 60px;
+  margin: 0 auto;
+  margin-top: 153px;
+}
+
+.play_game_btn_disabled .btn.btn-link {
+  width: 222px;
+  height: 60px;
+  background: url(../img/connected/btn-disabled.png);
+  font-family: "Exo", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 60px;
+  text-align: center;
+  color: #FFFFFF;
+  cursor: not-allowed;
+}
+
+.not_found {
+  background: url(../img/cityNftNotFound/not-found.png);
+  width: 34px;
+  height: 34px;
+  margin-top: 23px;
+}
+
+.city_nft_not_found_main_text {
+  width: 350px;
+  font-family: "Inversionz-Unboxed", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 29px;
+  text-align: center;
+  
+  color: #FFFFFF;
+  margin-top: 12px;
+}
+
+.city_nft_not_found_footer_text {
+  width: 362px;
+  font-family: "Exo", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  
+  color: #FFFFFF;
+  margin-top: 20px;
+  display: inline-block;
+}
+
+.city_nft_not_found_footer_link {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #0C474F;
+}
+
+.city_nft_not_found_footer_link:hover {
+  color: #B0F2F3
+}
+
+.stake_mscp_btn {
+  margin-top: 61px;
+}
+
+.stake_mscp_btn .btn.btn-link {
+  width: 222px;
+  height: 60px;
+  background: url(../img/cityNftFound/btn.png);
+  font-family: "Exo", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 60px;
+  text-align: center;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.city_nft_found_image{
+  width: 229px;
+  height: 293px;
+  background: url("../img/cityNftFound/city.png");
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-sizing: border-box;
+  margin-top:16px;
+}
+
+.city_nft_found_text {
+  font-family: "Exo", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 48px;
+  text-align: center;
+  color: #FFFFFF;
+  margin-top: 7px;
+}
+
+.city_nft_found_footer{
+  width: 248px;
+  height: 50px;
+  background: url("../img/cityNftFound/cities.png");
+  margin-top:5px;
+}
+
+.play_game_btn {
+  width: 222px;
+  height: 60px;
+  margin: 0 auto;
+  margin-top: 153px;
+}
+
+.play_game_btn .btn.btn-link {
+  width: 222px;
+  height: 60px;
+  background: url(../img/cityNftFound/btn.png);
+  font-family: "Exo", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 60px;
+  text-align: center;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.staked_mscp {
+  margin-top:89px;
+}
+
+.staked_mscp_mark{
+  width: 37px;
+  height: 25px;
+  display: inline-block;
+}
+
+.staked_mscp_text {
+  display: inline-block;
+  margin-left: 36px;
+  font-family: "Exo", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 40px;
+  text-align: center;
+  color: #FFFFFF;
+  vertical-align: middle;
+}
+
+.staked_mscp_footer_text {
+  width: 340px;
+  margin-top: 26px;
+  font-family: "Exo", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+}

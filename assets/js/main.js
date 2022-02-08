@@ -137,6 +137,31 @@
         }
     });
 
+    $('#wallet').on('click', function(e) {
+      window.location = 'walletConnect.html';
+    });
+
+    $('#metamask').on('click', function(e) {
+      window.location = 'connected.html';
+    });
+
+    $('#walletConnect').on('click', function(e) {
+      window.location = 'connected.html';
+    });
+
+
+    $(document).ready(function(){
+      const currentLocation = window.location;
+      if(currentLocation.pathname === '/connected.html') {
+        setTimeout(()=>{
+          if (Math.random() >= 0.5){
+            window.location = 'cityNftFound.html';
+          }else{
+            window.location = 'cityNftNotFound.html';
+          }
+        },5000)
+      }
+    });
      
     
 })(jQuery);	

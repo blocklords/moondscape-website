@@ -7191,7 +7191,11 @@ section.error_section {
   height: 25px;
 }
 
-.marginFromTop {
+.city_nft_container {
+  margin-top:291px;
+}
+
+.stake_mscp_container{
   margin-top:291px;
 }
 
@@ -7275,19 +7279,6 @@ section.error_section {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-@media only screen and (max-width: 991px) {
-  .marginFromTop {
-    margin-top:100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .stake_mscp_wrapper {
-    float:none
-  }
 }
 
 .stake_mscp_header {
@@ -7518,4 +7509,76 @@ section.error_section {
   line-height: 24px;
   text-align: center;
   color: rgba(255, 255, 255, 0.5);
+}
+
+@media only screen and (max-width: 991px) {
+  .city_nft_container {
+    margin-top:110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stake_mscp_container {
+    margin-top:30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stake_mscp_wrapper {
+    float:none
+  }
+
+  .play_game_btn {
+    margin-top: 30px;
+  }
+
+  .play_game_btn_disabled {
+    margin-top: 30px;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .beta_header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header_logo_position {
+    width: auto;
+    margin: 0 auto;
+  }
+
+  .header_wallet{
+    margin: 0 auto;
+    float: none;
+  }
+
+  .city_nft_container {
+    margin-top:140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stake_mscp_container {
+    margin-top:30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stake_mscp_wrapper {
+    float:none
+  }
+
+  .play_game_btn {
+    margin-top: 30px;
+  }
+
+  .play_game_btn_disabled {
+    margin-top: 30px;
+  }
 }

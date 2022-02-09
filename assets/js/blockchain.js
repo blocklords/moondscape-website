@@ -65,10 +65,11 @@ window.checkCityNft = async function(){
       console.log('response: ', response)
       const json = await response.json();
       console.log('json: ', json)
-
+      const nft = json[0];
+      console.log('nft: ',nft)
       const foundCityNftHtml = `
-      <img class="city_nft_found_image" src="${json.data.imageUrl}" alt="cityNft"> </img>
-      <span class = "city_nft_found_text">${json.data.name}</span>
+      <img class="city_nft_found_image" src="${nft.imageUrl}" alt="cityNft"> </img>
+      <span class = "city_nft_found_text">${nft.name}</span>
       <div class="city_nft_found_footer"> </div>
       `;
       $('#city_nft').html(foundCityNftHtml);

@@ -4,7 +4,6 @@
  * @throws Exception in case of unconnected wallet, invalid network, damage of configuration
  */
  window.getContractAsync = async function(name) {
-   console.log('getContract')
   if (!web3) {
       throw "Failed to load Web3 library. Please check your internet connection!";
   }
@@ -13,7 +12,6 @@
   }
 
   const chainId = await web3.eth.getChainId();
-  console.log('chainId from getcontract:' , chainId)
   if (window.config[chainId] === undefined) {
       throw `${chainId} not supported. Please switch your blockchain network!`;
   }

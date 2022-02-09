@@ -7145,13 +7145,13 @@ section.error_section {
   margin-right: 43px;
   float: right;
   cursor: pointer;
-  background: url("../img/connected/wallet-bg.png");
+  background: url("../img/play-game/wallet-bg.png");
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
 .header_wallet:hover {
-  background: url("../img/connected/disconnect-wallet.png");
+  background: url("../img/play-game/disconnect-wallet.png");
   transition: background .3s;
 }
 
@@ -7195,7 +7195,7 @@ section.error_section {
   margin-top:291px;
 }
 
-.city_nft_search_wrapper {
+.city_nft_wrapper {
   width: 431px;
   height: 436px;
   background: rgba(0, 0, 0, 0.5);
@@ -7207,7 +7207,7 @@ section.error_section {
 .city_nft_search_image{
   width: 126px;
   height: 126px;
-  background: url("../img/connected/city-nft-search-image.png");
+  background: url("../img/play-game/city-nft-search-image.png");
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-sizing: border-box;
   margin-top:63px;
@@ -7262,7 +7262,7 @@ section.error_section {
   margin-top: 20px;
 }
 
-.stake_mscp {
+.stake_mscp_wrapper {
   width: 424.88px;
   height: 436px;
 
@@ -7275,6 +7275,19 @@ section.error_section {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+@media only screen and (max-width: 991px) {
+  .marginFromTop {
+    margin-top:100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stake_mscp_wrapper {
+    float:none
+  }
 }
 
 .stake_mscp_header {
@@ -7319,7 +7332,7 @@ section.error_section {
 .stake_mscp_btn_disabled .btn.btn-link {
   width: 222px;
   height: 60px;
-  background: url(../img/connected/btn-disabled.png);
+  background: url(../img/play-game/btn-disabled.png);
   font-family: "Exo", sans-serif;
   font-style: normal;
   font-weight: bold;
@@ -7352,7 +7365,7 @@ section.error_section {
 .play_game_btn_disabled .btn.btn-link {
   width: 222px;
   height: 60px;
-  background: url(../img/connected/btn-disabled.png);
+  background: url(../img/play-game/btn-disabled.png);
   font-family: "Exo", sans-serif;
   font-style: normal;
   font-weight: bold;
@@ -7364,7 +7377,7 @@ section.error_section {
 }
 
 .not_found {
-  background: url(../img/cityNftNotFound/not-found.png);
+  background: url(../img/play-game/not-found.png);
   width: 34px;
   height: 34px;
   margin-top: 23px;
@@ -7414,7 +7427,7 @@ section.error_section {
 .stake_mscp_btn .btn.btn-link {
   width: 222px;
   height: 60px;
-  background: url(../img/cityNftFound/btn.png);
+  background: url(../img/play-game/btn.png);
   font-family: "Exo", sans-serif;
   font-style: normal;
   font-weight: bold;
@@ -7428,7 +7441,7 @@ section.error_section {
 .city_nft_found_image{
   width: 229px;
   height: 293px;
-  background: url("../img/cityNftFound/city.png");
+  background: url("../img/play-game/city.png");
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-sizing: border-box;
   margin-top:16px;
@@ -7448,7 +7461,7 @@ section.error_section {
 .city_nft_found_footer{
   width: 248px;
   height: 50px;
-  background: url("../img/cityNftFound/cities.png");
+  background: url("../img/play-game/cities.png");
   margin-top:5px;
 }
 
@@ -7462,7 +7475,7 @@ section.error_section {
 .play_game_btn .btn.btn-link {
   width: 222px;
   height: 60px;
-  background: url(../img/cityNftFound/btn.png);
+  background: url(../img/play-game/btn.png);
   font-family: "Exo", sans-serif;
   font-style: normal;
   font-weight: bold;

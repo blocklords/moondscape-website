@@ -136,16 +136,7 @@
         	$this.toggleClass('menu-open');
         }
     });
-
-    $('#wallet').on('click', function(e) {
-      window.location = 'walletConnect.html';
-    });
-
-    $('#walletConnect').on('click', function(e) {
-      window.location = 'connected.html';
-    });
-     
-    
+  
 })(jQuery);	
 
 

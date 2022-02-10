@@ -101,7 +101,7 @@ window.checkStakedMSCP = async function(){
   const userHasStakedMSCPHtml = `
   <span class="stake_mscp_header">STAKE MSCP</span>
   <div class="stake_mscp_main">
-    <img class="stake_mscp_mscp" src="assets/img/others/mscp_token.webp" alt="">
+    <img class="stake_mscp_mscp" src="assets/img/others/mscp_token.png" alt="">
     <span id="mscp_amount" class="stake_mscp_amount">${window.config[window.chainId].amount}</span>
   </div>
   <div class="staked_mscp">
@@ -114,7 +114,7 @@ window.checkStakedMSCP = async function(){
   const userDoesNotHaveStakedMSCP = `
   <span class="stake_mscp_header">STAKE MSCP</span>
   <div class="stake_mscp_main">
-    <img class="stake_mscp_mscp" src="assets/img/others/mscp_token.webp" alt="">
+    <img class="stake_mscp_mscp" src="assets/img/others/mscp_token.png" alt="">
     <span  id="mscp_amount"class="stake_mscp_amount">${window.config[window.chainId].amount}</span>
   </div>
   <div class="stake_mscp_btn${nftBalance < 1 ? '_disabled': ''}">

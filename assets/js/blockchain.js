@@ -80,7 +80,7 @@ window.checkCityNft = async function(){
 
   const playGameHtml = `
   <div class="play_game_btn${window.nftBalance < 1 || window.cityNftId < 1 || !window.userHasStakedMSCP ? '_disabled' : ''}">
-    <a class="btn btn-link" href="#">Play Game</a>
+    <a class="btn btn-link" href="#">Early Access</a>
   </div>
   `;
   $('#play_game').html(playGameHtml);
@@ -130,7 +130,7 @@ window.checkStakedMSCP = async function(){
 
   const playGameHtml = `
   <div class="play_game_btn${window.nftBalance < 1 || window.cityNftId < 1 || !window.userHasStakedMSCP ? '_disabled' : ''}">
-    <a class="btn btn-link" href="#">Play Game</a>
+    <a class="btn btn-link" href="#">Early Access</a>
   </div>
   `;
   $('#play_game').html(playGameHtml);

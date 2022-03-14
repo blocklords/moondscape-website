@@ -298,18 +298,18 @@ async function validateChainAsync(chainId) {
     }
   };
 
-  if(chainId !== moonbeamHex && chainId !== moonbaseHex){
+  if(chainId !== moonbeamHex){
     try{
       await ethereum.request({
         method: 'wallet_switchEthereumChain',
-        params: [{ chainId: moonbaseHex }]
+        params: [{ chainId: moonbeamHex }]
       });
     }catch (error) {
       if (error.code === 4902) {
         try {
           await ethereum.request({
             method: 'wallet_addEthereumChain',
-            params: [chainInfo[Number(moonbaseHex)]]
+            params: [chainInfo[Number(moonbeamHex)]]
           });
   
         } catch (addError) {
@@ -375,8 +375,7 @@ async function onConnectWalletConnect(){
   console.log('onConnectWalletConnect')
   provider = new window.WalletConnectProvider.default({
     rpc: {
-      1284: 'https://rpc.api.moonbeam.network',
-      1287: 'https://rpc.testnet.moonbeam.network'
+      1284: 'https://rpc.api.moonbeam.network'
     },
     qrcode: true,
     pollingInterval: 1200,

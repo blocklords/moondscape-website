@@ -137,9 +137,9 @@ window.checkStakedMSCP = async function(){
 }
 
 window.stakeMSCP = async function(){
-  if(window.nftBalance < 1) return;
-  if(window.cityNftId < 1) return;
-  if(window.userHasStakedMSCP) return;
+  // if(window.nftBalance < 1) return;
+  // if(window.cityNftId < 1) return;
+  // if(window.userHasStakedMSCP) return;
 
   if (!window.MscpTokenContract) {
     try {

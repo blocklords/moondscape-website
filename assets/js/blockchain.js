@@ -148,7 +148,7 @@ window.stakeMSCP = async function(){
       return;
     }
   }
-  const address = window.config[window.chainId].MoonscapeBetaContract;
+  const address = window.config[window.chainId].MoonscapeBeta;
   console.log('address: ',address);
   const amountInGwei = web3.utils.toWei(window.config[window.chainId].amount.toString(),"ether");
   console.log('amountGWei: ', amountInGwei);

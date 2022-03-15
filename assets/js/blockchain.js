@@ -149,7 +149,7 @@ window.stakeMSCP = async function(){
     }
   }
   const address = window.config[window.chainId].MoonscapeBetaContract;
-  const amountInGwei = parseEther(window.config[window.chainId].amount);
+  const amountInGwei = web3.utils.toWei(window.config[window.chainId].amount.toString(),"ether");
   await window.MscpTokenContract.methods
     .approve(address, amountInGwei)
     .send({from: window.selectedAccount})

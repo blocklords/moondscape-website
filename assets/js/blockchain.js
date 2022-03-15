@@ -80,7 +80,7 @@ window.checkCityNft = async function(){
 
   const playGameHtml = `
   <div class="play_game_btn${window.nftBalance < 1 || window.cityNftId < 1 || !window.userHasStakedMSCP ? '_disabled' : ''}">
-    <a class="btn btn-link" href="#">Early Access</a>
+    <a class="btn btn-link" href="https://pre-play.moonscapegame.com/">Early Access</a>
   </div>
   `;
   $('#play_game').html(playGameHtml);
@@ -120,7 +120,7 @@ window.checkStakedMSCP = async function(){
   <div class="stake_mscp_btn${nftBalance < 1 ? '_disabled': ''}">
     <a class="btn btn-link" onClick="stakeMSCP()">Stake MSCP</a>
   </div>
-  <span class="stake_mscp_footer_text">After staking, your funds will be locked until Closed Beta ends.</span>
+  <span class="stake_mscp_footer_text">After staking, your funds will be locked until Early Access ends.</span>
   `;
   if(userHasStakedMSCP){
     $('#stake_mscp').html(userHasStakedMSCPHtml);
@@ -130,7 +130,7 @@ window.checkStakedMSCP = async function(){
 
   const playGameHtml = `
   <div class="play_game_btn${window.nftBalance < 1 || window.cityNftId < 1 || !window.userHasStakedMSCP ? '_disabled' : ''}">
-    <a class="btn btn-link" href="#">Early Access</a>
+    <a class="btn btn-link" href="https://pre-play.moonscapegame.com/">Early Access</a>
   </div>
   `;
   $('#play_game').html(playGameHtml);
@@ -187,6 +187,8 @@ window.stakeMSCP = async function(){
       console.log('LOCK_ERROR', error);
       return;
     });
+
+  await checkStakedMSCP(); 
 }
 
 function updateBalance() {

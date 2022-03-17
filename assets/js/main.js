@@ -136,6 +136,62 @@
         	$this.toggleClass('menu-open');
         }
     });
+
+    let password = '';
+    let confirmPassword = '';
+    $( "#password" ).keyup(function(e) {
+      password = e.target.value;
+      const resetPasswordBtnDisabled = `
+      <div class="reset_password_btn_disabled">
+        <a class="btn btn-link" href="#">Reset Password</a>
+      </div>
+      `;
+      const resetPasswordBtnEnabled = `
+      <div class="reset_password_btn">
+        <a class="btn btn-link" href="#">Reset Password</a>
+      </div>
+      `;
+      if(!!confirmPassword && !!password){
+        if (password !== confirmPassword){
+          $( "#password" ).addClass('reset_password_input_wrong');
+          $( "#confirm-password" ).addClass('reset_password_input_wrong');
+          $( "#reset_password_error" ).removeClass('reset_password_error_hidden');
+          $('#reset_password_btn').html(resetPasswordBtnDisabled);
+        } else {
+          $( "#password" ).removeClass('reset_password_input_wrong');
+          $( "#confirm-password" ).removeClass('reset_password_input_wrong');
+          $( "#reset_password_error" ).addClass('reset_password_error_hidden');
+          $('#reset_password_btn').html(resetPasswordBtnEnabled);
+        }
+      }
+    });
+
+    $( "#confirm-password" ).keyup(function(e) {
+      confirmPassword = e.target.value;
+      const resetPasswordBtnDisabled = `
+      <div class="reset_password_btn_disabled">
+        <a class="btn btn-link" href="#">Reset Password</a>
+      </div>
+      `;
+      const resetPasswordBtnEnabled = `
+      <div class="reset_password_btn">
+        <a class="btn btn-link" href="#">Reset Password</a>
+      </div>
+      `;
+      if(!!confirmPassword && !!password){
+        if ( password !== confirmPassword){
+          $( "#password" ).addClass('reset_password_input_wrong');
+          $( "#confirm-password" ).addClass('reset_password_input_wrong');
+          $( "#reset_password_error" ).removeClass('reset_password_error_hidden');
+          $('#reset_password_btn').html(resetPasswordBtnDisabled);
+        } else {
+          $( "#password" ).removeClass('reset_password_input_wrong');
+          $( "#confirm-password" ).removeClass('reset_password_input_wrong');
+          $( "#reset_password_error" ).addClass('reset_password_error_hidden');
+          $('#reset_password_btn').html(resetPasswordBtnEnabled);
+        }
+      }
+    });
   
 })(jQuery);	
 

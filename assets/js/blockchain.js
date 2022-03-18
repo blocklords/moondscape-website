@@ -293,18 +293,18 @@ async function validateChainAsync(chainId) {
     }
   };
 
-  if(chainId !== moonbeamHex){
+  if(chainId !== moonbaseHex){
     try{
       await ethereum.request({
         method: 'wallet_switchEthereumChain',
-        params: [{ chainId: moonbeamHex }]
+        params: [{ chainId: moonbaseHex }]
       });
     }catch (error) {
       if (error.code === 4902) {
         try {
           await ethereum.request({
             method: 'wallet_addEthereumChain',
-            params: [chainInfo[Number(moonbeamHex)]]
+            params: [chainInfo[Number(moonbaseHex)]]
           });
   
         } catch (addError) {

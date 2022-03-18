@@ -30,52 +30,43 @@ window.checkCityNft = async function(){
   </div>
   `;
   $('#city_nft').html(loadingCifyNftHtml);
-  if (!window.CityNftContract) {
-    try {
-      window.CityNftContract = await getContractAsync('CityNft');
-    } catch (e) {
-      return;
-    }
-  }
 
-  const nftBalance = await window.CityNftContract.methods.balanceOf(window.selectedAccount).call({from: window.selectedAccount});
-  window.nftBalance = nftBalance;
-  console.log('nft balance: ', nftBalance)
-  const notFoundCityNftHtml = `
-  <div class="city_nft_search_image"> </div>
-  <div class="not_found"> </div>
-  <div class="city_nft_not_found_main_text">
-    <span>NO CITY NFT FOUND IN WALLET</span>
-  </div>
-  <div class="city_nft_not_found_footer_text">
-    <span>Unfortunately, we couldn't find any city NFT in your wallet.</span> <a class="city_nft_not_found_footer_link" onClick="checkCityNft()">Scan again?</a>
-  </div>
-  `;
+  const response = await postAsync(`${window.config[window.chainId].api}find-by-nft-owner`, {walletAddress: window.selectedAccount});
+  console.log('response: ', response)
 
+  const json = await response.json();
+  console.log('json: ', json)
 
-  if(nftBalance < 1){
-    $('#city_nft').html(notFoundCityNftHtml);
-  }else{
-    const cityNftId = await window.CityNftContract.methods.tokenOfOwnerByIndex(window.selectedAccount, 0).call({from: window.selectedAccount});
-    window.cityNftId = cityNftId;
+  if(Array.isArray(json) && json.length > 0){
+    window.nftBalance = json.length;
+    console.log('nft balance: ', nftBalance)
+
+    const nft = json[0];
+    console.log('nft: ',nft)
+
+    window.cityNftId = nft.nftId;
     console.log('cityNftId: ', cityNftId)
-    if(cityNftId >0){
-      const response = await postAsync(window.config[window.chainId].api, {ids: [cityNftId]});
-      
-      console.log('response: ', response)
-      const json = await response.json();
-      console.log('json: ', json)
-      const nft = json[0];
-      console.log('nft: ',nft)
-      const foundCityNftHtml = `
-      <img class="city_nft_found_image" src="${nft.imageUrl}" alt="cityNft"> </img>
-      <span class = "city_nft_found_text">${nft.name}</span>
-      <div class="city_nft_found_footer"> </div>
-      `;
-      $('#city_nft').html(foundCityNftHtml);
-    }else{
-      $('#city_nft').html(notFoundCityNftHtml);
-    }
+
+    const foundCityNftHtml = `
+    <img class="city_nft_found_image" src="${nft.imageUrl}" alt="cityNft"> </img>
+    <span class = "city_nft_found_text">${nft.name}</span>
+    <div class="city_nft_found_footer"> </div>
+    `;
+    $('#city_nft').html(foundCityNftHtml);
+  }else{
+    window.nftBalance = 0;
+    console.log('nft balance: ', nftBalance)
+    const notFoundCityNftHtml = `
+    <div class="city_nft_search_image"> </div>
+    <div class="not_found"> </div>
+    <div class="city_nft_not_found_main_text">
+      <span>NO CITY NFT FOUND IN WALLET</span>
+    </div>
+    <div class="city_nft_not_found_footer_text">
+      <span>Unfortunately, we couldn't find any city NFT in your wallet.</span> <a class="city_nft_not_found_footer_link" onClick="checkCityNft()">Scan again?</a>
+    </div>
+    `;
+    $('#city_nft').html(notFoundCityNftHtml);
   }
 
   const playGameHtml = `
@@ -279,7 +270,7 @@ async function validateChainAsync(chainId) {
 
   const chainInfo = {
     1284: {
-      chainId: '0x504',
+      chainId: moonbeamHex,
       chainName: 'Moonbeam',
       nativeCurrency: {
         name: 'GLMR',
@@ -290,7 +281,7 @@ async function validateChainAsync(chainId) {
       blockExplorerUrls: ['https://moonbeam.moonscan.io/']
     },
     1287: {
-      chainId: '0x507',
+      chainId: moonbaseHex,
       chainName: 'Moonbase Alpha',
       nativeCurrency: {
         name: 'DEV',

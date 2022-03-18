@@ -30,52 +30,41 @@ window.checkCityNft = async function(){
   </div>
   `;
   $('#city_nft').html(loadingCifyNftHtml);
-  if (!window.CityNftContract) {
-    try {
-      window.CityNftContract = await getContractAsync('CityNft');
-    } catch (e) {
-      return;
-    }
-  }
 
-  const nftBalance = await window.CityNftContract.methods.balanceOf(window.selectedAccount).call({from: window.selectedAccount});
-  window.nftBalance = nftBalance;
-  console.log('nft balance: ', nftBalance)
-  const notFoundCityNftHtml = `
-  <div class="city_nft_search_image"> </div>
-  <div class="not_found"> </div>
-  <div class="city_nft_not_found_main_text">
-    <span>NO CITY NFT FOUND IN WALLET</span>
-  </div>
-  <div class="city_nft_not_found_footer_text">
-    <span>Unfortunately, we couldn't find any city NFT in your wallet.</span> <a class="city_nft_not_found_footer_link" onClick="checkCityNft()">Scan again?</a>
-  </div>
-  `;
+  const response = await postAsync(`${window.config[window.chainId].api}find-by-nft-owner`, {walletAddress: window.selectedAccount});
+  console.log('response: ', response)
 
+  const json = await response.json();
+  console.log('json: ', json)
 
-  if(nftBalance < 1){
-    $('#city_nft').html(notFoundCityNftHtml);
-  }else{
-    const cityNftId = await window.CityNftContract.methods.tokenOfOwnerByIndex(window.selectedAccount, 0).call({from: window.selectedAccount});
-    window.cityNftId = cityNftId;
+  if(Array.isArray(json) && json.length > 0){
+    window.nftBalance = json.length;
+    console.log('nft balance: ', nftBalance)
+
+    const nft = json[0];
+    console.log('nft: ',nft)
+
+    window.cityNftId = nft.nftId;
     console.log('cityNftId: ', cityNftId)
-    if(cityNftId >0){
-      const response = await postAsync(window.config[window.chainId].api, {ids: [cityNftId]});
-      
-      console.log('response: ', response)
-      const json = await response.json();
-      console.log('json: ', json)
-      const nft = json[0];
-      console.log('nft: ',nft)
-      const foundCityNftHtml = `
-      <img class="city_nft_found_image" src="${nft.imageUrl}" alt="cityNft"> </img>
-      <span class = "city_nft_found_text">${nft.name}</span>
-      <div class="city_nft_found_footer"> </div>
-      `;
-      $('#city_nft').html(foundCityNftHtml);
-    }else{
-      $('#city_nft').html(notFoundCityNftHtml);
-    }
+
+    const foundCityNftHtml = `
+    <img class="city_nft_found_image" src="${nft.imageUrl}" alt="cityNft"> </img>
+    <span class = "city_nft_found_text">${nft.name}</span>
+    <div class="city_nft_found_footer"> </div>
+    `;
+    $('#city_nft').html(foundCityNftHtml);
+  }else{
+    const notFoundCityNftHtml = `
+    <div class="city_nft_search_image"> </div>
+    <div class="not_found"> </div>
+    <div class="city_nft_not_found_main_text">
+      <span>NO CITY NFT FOUND IN WALLET</span>
+    </div>
+    <div class="city_nft_not_found_footer_text">
+      <span>Unfortunately, we couldn't find any city NFT in your wallet.</span> <a class="city_nft_not_found_footer_link" onClick="checkCityNft()">Scan again?</a>
+    </div>
+    `;
+    $('#city_nft').html(notFoundCityNftHtml);
   }
 
   const playGameHtml = `
@@ -302,18 +291,18 @@ async function validateChainAsync(chainId) {
     }
   };
 
-  if(chainId !== moonbeamHex && chainId !== moonbaseHex){
+  if(chainId !== moonbeamHex){
     try{
       await ethereum.request({
         method: 'wallet_switchEthereumChain',
-        params: [{ chainId: moonbaseHex }]
+        params: [{ chainId: moonbeamHex }]
       });
     }catch (error) {
       if (error.code === 4902) {
         try {
           await ethereum.request({
             method: 'wallet_addEthereumChain',
-            params: [chainInfo[Number(moonbaseHex)]]
+            params: [chainInfo[Number(moonbeamHex)]]
           });
   
         } catch (addError) {
@@ -379,8 +368,7 @@ async function onConnectWalletConnect(){
   console.log('onConnectWalletConnect')
   provider = new window.WalletConnectProvider.default({
     rpc: {
-      1284: 'https://rpc.api.moonbeam.network',
-      1287: 'https://rpc.testnet.moonbeam.network'
+      1284: 'https://rpc.api.moonbeam.network'
     },
     qrcode: true,
     pollingInterval: 1200,

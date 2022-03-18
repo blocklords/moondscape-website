@@ -54,6 +54,8 @@ window.checkCityNft = async function(){
     `;
     $('#city_nft').html(foundCityNftHtml);
   }else{
+    window.nftBalance = 0;
+    console.log('nft balance: ', nftBalance)
     const notFoundCityNftHtml = `
     <div class="city_nft_search_image"> </div>
     <div class="not_found"> </div>
@@ -268,7 +270,7 @@ async function validateChainAsync(chainId) {
 
   const chainInfo = {
     1284: {
-      chainId: '0x504',
+      chainId: moonbeamHex,
       chainName: 'Moonbeam',
       nativeCurrency: {
         name: 'GLMR',
@@ -279,7 +281,7 @@ async function validateChainAsync(chainId) {
       blockExplorerUrls: ['https://moonbeam.moonscan.io/']
     },
     1287: {
-      chainId: '0x507',
+      chainId: moonbaseHex,
       chainName: 'Moonbase Alpha',
       nativeCurrency: {
         name: 'DEV',

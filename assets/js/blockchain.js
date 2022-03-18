@@ -85,7 +85,7 @@ window.checkStakedMSCP = async function(){
       return;
     }
   }
-
+  console.log(window.MoonscapeBetaContract.methods)
   const userHasStakedMSCP = await window.MoonscapeBetaContract.methods.stakers(window.selectedAccount).call({from: window.selectedAccount});
   window.userHasStakedMSCP = userHasStakedMSCP;
   console.log('userHasStakedMSCP: ', userHasStakedMSCP)
@@ -95,9 +95,8 @@ window.checkStakedMSCP = async function(){
     <img class="stake_mscp_mscp" src="assets/img/others/mscp_token.png" alt="">
     <span id="mscp_amount" class="stake_mscp_amount">${window.config[window.chainId].amount}</span>
   </div>
-  <div class="staked_mscp">
-    <img class="staked_mscp_mark" src="assets/img/play-game/mark.png" alt="">
-    <span class="staked_mscp_text">Staked MSCP</span>
+  <div class="stake_mscp_btn">
+    <a class="btn btn-link" onClick="unStakeMSCP()">Withdraw</a>
   </div>
   <span class="staked_mscp_footer_text">You can now join the Moonscape game. Enjoy!</span>
   `;
@@ -167,6 +166,34 @@ window.stakeMSCP = async function(){
   
   await window.MoonscapeBetaContract.methods
     .lock()
+    .send({from: window.selectedAccount})
+    .on('transactionHash', (txIdResponse) => {
+      console.log('LOCK_TRANSACTION_HASH', txIdResponse);
+    })
+    .on('receipt', (receipt) => {
+      console.log('LOCK_RECEIPT', receipt);
+    })
+    .on('error', (error) => {
+      console.log('LOCK_ERROR', error);
+      return;
+    });
+
+  await checkStakedMSCP(); 
+}
+
+window.unStakeMSCP = async function(){
+  if(!window.userHasStakedMSCP) return;
+  
+  if (!window.MoonscapeBetaContract) {
+    try {
+      window.MoonscapeBetaContract = await getContractAsync('MoonscapeBeta');
+    } catch (e) {
+      return;
+    }
+  }
+  
+  await window.MoonscapeBetaContract.methods
+    .unlock()
     .send({from: window.selectedAccount})
     .on('transactionHash', (txIdResponse) => {
       console.log('LOCK_TRANSACTION_HASH', txIdResponse);

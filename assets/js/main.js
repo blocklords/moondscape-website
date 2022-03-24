@@ -137,62 +137,109 @@
         }
     });
 
-    let password = '';
-    let confirmPassword = '';
-    $( "#password" ).keyup(function(e) {
-      password = e.target.value;
-      const resetPasswordBtnDisabled = `
-      <div class="reset_password_btn_disabled">
-        <a class="btn btn-link" href="#">Reset Password</a>
-      </div>
-      `;
-      const resetPasswordBtnEnabled = `
-      <div class="reset_password_btn">
-        <a class="btn btn-link" href="#">Reset Password</a>
-      </div>
-      `;
-      if(!!confirmPassword && !!password){
-        if (password !== confirmPassword){
-          $( "#password" ).addClass('reset_password_input_wrong');
-          $( "#confirm-password" ).addClass('reset_password_input_wrong');
-          $( "#reset_password_error" ).removeClass('reset_password_error_hidden');
-          $('#reset_password_btn').html(resetPasswordBtnDisabled);
-        } else {
-          $( "#password" ).removeClass('reset_password_input_wrong');
-          $( "#confirm-password" ).removeClass('reset_password_input_wrong');
-          $( "#reset_password_error" ).addClass('reset_password_error_hidden');
-          $('#reset_password_btn').html(resetPasswordBtnEnabled);
-        }
+    $(document).ready(function() {
+      console.log(window.location.href)
+      const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+      });
+  
+      window.token = params.token;
+      console.log(window.token);
+      if(!window.token){
+        $( "#reset_password_invalid_token" ).removeClass('reset_password_invalid_token_hidden');
+      }else{
+        $( "#reset_password_invalid_token" ).addClass('reset_password_invalid_token_hidden');
       }
-    });
-
-    $( "#confirm-password" ).keyup(function(e) {
-      confirmPassword = e.target.value;
-      const resetPasswordBtnDisabled = `
-      <div class="reset_password_btn_disabled">
-        <a class="btn btn-link" href="#">Reset Password</a>
-      </div>
-      `;
-      const resetPasswordBtnEnabled = `
-      <div class="reset_password_btn">
-        <a class="btn btn-link" href="#">Reset Password</a>
-      </div>
-      `;
-      if(!!confirmPassword && !!password){
-        if ( password !== confirmPassword){
-          $( "#password" ).addClass('reset_password_input_wrong');
-          $( "#confirm-password" ).addClass('reset_password_input_wrong');
-          $( "#reset_password_error" ).removeClass('reset_password_error_hidden');
-          $('#reset_password_btn').html(resetPasswordBtnDisabled);
-        } else {
-          $( "#password" ).removeClass('reset_password_input_wrong');
-          $( "#confirm-password" ).removeClass('reset_password_input_wrong');
-          $( "#reset_password_error" ).addClass('reset_password_error_hidden');
-          $('#reset_password_btn').html(resetPasswordBtnEnabled);
+  
+      window.resetPasswordBtnDisabled = true;
+      window.password = '';
+      let confirmPassword = '';
+      $( "#password" ).keyup(function(e) {
+        window.password = e.target.value;
+        const resetPasswordBtnDisabled = `
+        <div class="reset_password_btn_disabled">
+          <a class="btn btn-link" onClick="resetPassword()">Reset Password</a>
+        </div>
+        `;
+        const resetPasswordBtnEnabled = `
+        <div class="reset_password_btn">
+          <a class="btn btn-link" onClick="resetPassword()">Reset Password</a>
+        </div>
+        `;
+        if(!!confirmPassword && !!window.password){
+          if (window.password !== confirmPassword){
+            $( "#password" ).addClass('reset_password_input_wrong');
+            $( "#confirm-password" ).addClass('reset_password_input_wrong');
+            $( "#reset_password_error" ).removeClass('reset_password_error_hidden');
+            $('#reset_password_btn').html(resetPasswordBtnDisabled);
+            window.resetPasswordBtnDisabled=true;
+          } else {
+            $( "#password" ).removeClass('reset_password_input_wrong');
+            $( "#confirm-password" ).removeClass('reset_password_input_wrong');
+            $( "#reset_password_error" ).addClass('reset_password_error_hidden');
+            if(!!window.token){
+              $('#reset_password_btn').html(resetPasswordBtnEnabled);
+              window.resetPasswordBtnDisabled=false;
+            }
+            
+          }
         }
-      }
+      });
+  
+      $( "#confirm-password" ).keyup(function(e) {
+        confirmPassword = e.target.value;
+        const resetPasswordBtnDisabled = `
+        <div class="reset_password_btn_disabled">
+          <a class="btn btn-link" onClick="resetPassword()">Reset Password</a>
+        </div>
+        `;
+        const resetPasswordBtnEnabled = `
+        <div class="reset_password_btn">
+          <a class="btn btn-link" onClick="resetPassword()">Reset Password</a>
+        </div>
+        `;
+        if(!!confirmPassword && !!window.password){
+          if ( window.password !== confirmPassword){
+            $( "#password" ).addClass('reset_password_input_wrong');
+            $( "#confirm-password" ).addClass('reset_password_input_wrong');
+            $( "#reset_password_error" ).removeClass('reset_password_error_hidden');
+            $('#reset_password_btn').html(resetPasswordBtnDisabled);
+            window.resetPasswordBtnDisabled=true;
+          } else {
+            $( "#password" ).removeClass('reset_password_input_wrong');
+            $( "#confirm-password" ).removeClass('reset_password_input_wrong');
+            $( "#reset_password_error" ).addClass('reset_password_error_hidden');
+            if(!!window.token){
+              $('#reset_password_btn').html(resetPasswordBtnEnabled);
+              window.resetPasswordBtnDisabled=false;
+            }
+          }
+        }
+      });
     });
   
 })(jQuery);	
 
+window.putAsync = async function(url, data) {
+  return await fetch(url, {method: "PUT", headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data)});
+}
 
+window.resetPassword = async function(){
+  if(window.resetPasswordBtnDisabled) return;
+  const response = await window.putAsync(`https://pre-api.moonscapegame.com/api/v1/city/password-recovery/set-password`,{token: window.token, password:window.password});
+  console.log('response: ', response)
+  const json = await response.json();
+  console.log('json: ', json)
+  if (json.status === 200){
+    $("#reset_password_success").removeClass('reset_password_success_hidden');
+    window.resetPasswordBtnDisabled = true;
+    const resetPasswordBtnDisabled = `
+    <div class="reset_password_btn_disabled">
+      <a class="btn btn-link" onClick="resetPassword()">Reset Password</a>
+    </div>
+    `;
+    $('#reset_password_btn').html(resetPasswordBtnDisabled);
+  } else {
+    $("#reset_password_fail").removeClass('reset_password_fail_hidden');
+  }
+}

@@ -7685,6 +7685,19 @@ section.error_section {
   line-height: 18px;
 }
 
+.reset_password_invalid_token_hidden {
+  visibility: hidden;
+}
+
+.reset_password_invalid_token{
+  color: #FD4343;
+  float: left;
+  font-family: "Exo", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 18px;
+}
+
 .reset_password_btn_disabled {
   width: 222px;
   height: 60px;
@@ -7725,4 +7738,28 @@ section.error_section {
   text-align: center;
   color: #FFFFFF;
   cursor: pointer;
+}
+
+.reset_password_success_hidden {
+  visibility: hidden;
+}
+
+.reset_password_success{
+  color: greenyellow;
+  font-family: "Exo", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.reset_password_fail_hidden {
+  visibility: hidden;
+}
+
+.reset_password_fail{
+  color: #FD4343;
+  font-family: "Exo", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 18px;
 }

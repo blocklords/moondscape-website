@@ -2,7 +2,7 @@ window.config = {
   1284: {
     "CityNft": "0x7cdc5d0188733edf08412eecb9afa840772615dc",
     "MscpToken": "0xB60590313975f0d98821B6Cab5Ea2a6d9641D7B6",
-    "MoonscapeBeta": "0x82d9DD4838F0765eAC6877b0D75C5Da45E8A43Bb",
+    "MoonscapeBeta": "0x2aF02f0EbE994d21848146b8f934F180A38de64c",
     "amount": 3000,
     "api": "https://pre-api.moonscapegame.com/api/v1/city/"
   },

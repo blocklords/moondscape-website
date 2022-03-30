@@ -146,21 +146,28 @@ window.stakeMSCP = async function(){
   }
   const address = window.config[window.chainId].MoonscapeBeta;
   console.log('address: ',address);
-  const amountInGwei = web3.utils.toWei(window.config[window.chainId].amount.toString(),"ether");
-  console.log('amountGWei: ', amountInGwei);
-  await window.MscpTokenContract.methods
-    .approve(address, amountInGwei)
-    .send({from: window.selectedAccount})
-    .on('transactionHash', (txIdResponse) => {
-      console.log('APPROVE_TRANSACTION_HASH', txIdResponse);
-    })
-    .on('receipt', (receipt) => {
-      console.log('APPROVE_RECEIPT', receipt);
-    })
-    .on('error', (error) => {
-      console.log('APPROVE_ERROR', error);
-      return;
-    });
+  const allowance = await MscpTokenContract.methods
+          .allowance(window.selectedAccount, address)
+          .call();
+  console.log('allowance: ', allowance);
+  if(Number(allowance) < window.config[window.chainId].amount) {
+    const amountInGwei = web3.utils.toWei(window.config[window.chainId].amount.toString(),"ether");
+    console.log('amountGWei: ', amountInGwei);
+    await window.MscpTokenContract.methods
+      .approve(address, amountInGwei)
+      .send({from: window.selectedAccount})
+      .on('transactionHash', (txIdResponse) => {
+        console.log('APPROVE_TRANSACTION_HASH', txIdResponse);
+      })
+      .on('receipt', (receipt) => {
+        console.log('APPROVE_RECEIPT', receipt);
+      })
+      .on('error', (error) => {
+        console.log('APPROVE_ERROR', error);
+        return;
+      });
+  }
+
   
   if (!window.MoonscapeBetaContract) {
     try {

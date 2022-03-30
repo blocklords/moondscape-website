@@ -86,7 +86,11 @@ window.checkStakedMSCP = async function(){
     }
   }
 
-  const userHasStakedMSCP = await window.MoonscapeBetaContract.methods.stakers(window.selectedAccount).call({from: window.selectedAccount});
+  const sessionIdText = await window.MoonscapeBetaContract.methods.sessionId().call();
+  window.sessionId = sessionIdText;
+  console.log('sessionId: ', window.sessionId);
+
+  const userHasStakedMSCP = await window.MoonscapeBetaContract.methods.stakers(window.sessionId, window.selectedAccount).call({from: window.selectedAccount});
   window.userHasStakedMSCP = userHasStakedMSCP;
   console.log('userHasStakedMSCP: ', userHasStakedMSCP)
   const userHasStakedMSCPHtml = `
@@ -131,6 +135,7 @@ window.stakeMSCP = async function(){
   if(window.nftBalance < 1) return;
   if(window.cityNftId < 1) return;
   if(window.userHasStakedMSCP) return;
+  if(window.sessionId < 0) return;
 
   if (!window.MscpTokenContract) {
     try {
@@ -166,7 +171,7 @@ window.stakeMSCP = async function(){
   }
   
   await window.MoonscapeBetaContract.methods
-    .lock()
+    .lock(window.sessionId)
     .send({from: window.selectedAccount})
     .on('transactionHash', (txIdResponse) => {
       console.log('LOCK_TRANSACTION_HASH', txIdResponse);

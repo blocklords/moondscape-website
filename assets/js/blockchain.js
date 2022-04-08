@@ -9,8 +9,7 @@ window.postAsync = async function(url, data) {
 }
 
 async function preparePage(){
-  if(window.chainId && window.config[chainId]){
-    $('#mscp_amount').text(window.config[chainId].amount);
+  if (window.chainId && window.config[chainId]) {
 
     await checkCityNft();
 
@@ -89,7 +88,11 @@ window.checkStakedMSCP = async function(){
   const sessionIdText = await window.MoonscapeBetaContract.methods.sessionId().call();
   window.sessionId = sessionIdText;
   console.log('sessionId: ', window.sessionId);
-
+  const requiredAmountToStakeWei = (await window.MoonscapeBetaContract.methods.sessions(Number(sessionId)).call()).requiredAmount;
+  console.log('requiredAmountToStakeWei: ', requiredAmountToStakeWei)
+  const requiredAmountToStake = web3.utils.fromWei(requiredAmountToStakeWei,"ether");
+  console.log('requiredAmountToStake: ', requiredAmountToStake)
+  window.requiredAmountToStake = requiredAmountToStake;
   const userHasStakedMSCP = await window.MoonscapeBetaContract.methods.stakers(window.sessionId, window.selectedAccount).call({from: window.selectedAccount});
   window.userHasStakedMSCP = userHasStakedMSCP;
   console.log('userHasStakedMSCP: ', userHasStakedMSCP)
@@ -97,7 +100,7 @@ window.checkStakedMSCP = async function(){
   <span class="stake_mscp_header">STAKE MSCP</span>
   <div class="stake_mscp_main">
     <img class="stake_mscp_mscp" src="assets/img/others/mscp_token.png" alt="">
-    <span id="mscp_amount" class="stake_mscp_amount">${window.config[window.chainId].amount}</span>
+    <span id="mscp_amount" class="stake_mscp_amount">${requiredAmountToStake}</span>
   </div>
   <div class="stake_mscp_btn">
     <a class="btn btn-link" onClick="unStakeMSCP()">Withdraw</a>
@@ -109,7 +112,7 @@ window.checkStakedMSCP = async function(){
   <span class="stake_mscp_header">STAKE MSCP</span>
   <div class="stake_mscp_main">
     <img class="stake_mscp_mscp" src="assets/img/others/mscp_token.png" alt="">
-    <span  id="mscp_amount"class="stake_mscp_amount">${window.config[window.chainId].amount}</span>
+    <span  id="mscp_amount"class="stake_mscp_amount">${requiredAmountToStake}</span>
   </div>
   <div class="stake_mscp_btn${nftBalance < 1 ? '_disabled': ''}">
     <a class="btn btn-link" onClick="stakeMSCP()">Stake MSCP</a>
@@ -151,8 +154,8 @@ window.stakeMSCP = async function(){
   console.log('allowance: ', allowance);
   const formattedAllowance = web3.utils.fromWei(allowance,"ether");
   console.log('formattedAllowance: ', formattedAllowance)
-  if(Number(formattedAllowance) < window.config[window.chainId].amount) {
-    const amountInGwei = web3.utils.toWei(window.config[window.chainId].amount.toString(),"ether");
+  if(Number(formattedAllowance) < window.requiredAmountToStake) {
+    const amountInGwei = web3.utils.toWei(window.requiredAmountToStake.toString(),"ether");
     console.log('amountGWei: ', amountInGwei);
     await window.MscpTokenContract.methods
       .approve(address, amountInGwei)

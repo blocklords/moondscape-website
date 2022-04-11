@@ -97,7 +97,7 @@ window.checkStakedMSCP = async function(){
   window.userHasStakedMSCP = userHasStakedMSCP;
   console.log('userHasStakedMSCP: ', userHasStakedMSCP)
   const endTime = (await window.MoonscapeBetaContract.methods.sessions(Number(sessionId)).call()).endTime;
-  console.log('endTime: ', endTIme)
+  console.log('endTime: ', endTime)
   const inactiveSession = new Date() > new Date(Number(endTime) * 1000); 
   console.log('inactiveSession: ', inactiveSession);
   const userHasStakedMSCPHtml = `

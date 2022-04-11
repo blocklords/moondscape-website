@@ -121,7 +121,7 @@ window.checkStakedMSCP = async function(){
   ${inactiveSession ? '' : `<div class="stake_mscp_btn${nftBalance < 1 ? '_disabled': ''}">
     <a class="btn btn-link" onClick="stakeMSCP()">Stake MSCP</a>
   </div>`}
-  <span class="stake_mscp_footer_text">After staking, your funds will be locked until Early Access ends.</span>
+  <span class="stake_mscp_footer_text">${inactiveSession ? 'Session finished' : 'After staking, your funds will be locked until Early Access ends.</span>'}
   `;
   if(userHasStakedMSCP){
     $('#stake_mscp').html(userHasStakedMSCPHtml);

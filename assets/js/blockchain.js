@@ -96,6 +96,10 @@ window.checkStakedMSCP = async function(){
   const userHasStakedMSCP = await window.MoonscapeBetaContract.methods.stakers(window.sessionId, window.selectedAccount).call({from: window.selectedAccount});
   window.userHasStakedMSCP = userHasStakedMSCP;
   console.log('userHasStakedMSCP: ', userHasStakedMSCP)
+  const endTime = (await window.MoonscapeBetaContract.methods.sessions(Number(sessionId)).call()).endTime;
+  console.log('endTime: ', endTIme)
+  const inactiveSession = new Date() > new Date(Number(endTime) * 1000); 
+  console.log('inactiveSession: ', inactiveSession);
   const userHasStakedMSCPHtml = `
   <span class="stake_mscp_header">STAKE MSCP</span>
   <div class="stake_mscp_main">
@@ -114,9 +118,9 @@ window.checkStakedMSCP = async function(){
     <img class="stake_mscp_mscp" src="assets/img/others/mscp_token.png" alt="">
     <span  id="mscp_amount"class="stake_mscp_amount">${requiredAmountToStake}</span>
   </div>
-  <div class="stake_mscp_btn${nftBalance < 1 ? '_disabled': ''}">
+  ${inactiveSession ? '' : `<div class="stake_mscp_btn${nftBalance < 1 ? '_disabled': ''}">
     <a class="btn btn-link" onClick="stakeMSCP()">Stake MSCP</a>
-  </div>
+  </div>`}
   <span class="stake_mscp_footer_text">After staking, your funds will be locked until Early Access ends.</span>
   `;
   if(userHasStakedMSCP){

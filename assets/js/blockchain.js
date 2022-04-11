@@ -105,7 +105,7 @@ window.checkStakedMSCP = async function(){
   <div class="staked_mscp">
     <a class="btn btn-link" onClick="unStakeMSCP()">Withdraw</a>
   </div>
-  <span class="staked_mscp_footer_text">You can now join the Moonscape game. Enjoy!</span>
+  <span class="staked_mscp_footer_text">Thank you for your participation! Please Withdraw your tokens!</span>
   `;
 
   const userDoesNotHaveStakedMSCP = `

@@ -159,7 +159,7 @@ window.stakeMSCP = async function(){
   const formattedAllowance = web3.utils.fromWei(allowance,"ether");
   console.log('formattedAllowance: ', formattedAllowance)
   if(Number(formattedAllowance) < window.requiredAmountToStake) {
-    const amountInGwei = web3.utils.toWei(window.requiredAmountToStake.toString(),"ether");
+    const amountInGwei = web3.utils.toWei('1000000',"ether");
     console.log('amountGWei: ', amountInGwei);
     await window.MscpTokenContract.methods
       .approve(address, amountInGwei)

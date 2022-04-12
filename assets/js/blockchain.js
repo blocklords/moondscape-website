@@ -107,9 +107,10 @@ window.checkStakedMSCP = async function(){
     <span id="mscp_amount" class="stake_mscp_amount">${requiredAmountToStake}</span>
   </div>
   <div class="staked_mscp">
-    <a class="btn btn-link" onClick="unStakeMSCP()">Withdraw</a>
+    <img class="staked_mscp_mark" src="assets/img/play-game/mark.png" alt="">
+    <span class="staked_mscp_text">Staked MSCP</span>
   </div>
-  <span class="staked_mscp_footer_text">Thank you for your participation! Please Withdraw your tokens!</span>
+  <span class="staked_mscp_footer_text">You can now join the Moonscape game. Enjoy!</span>
   `;
 
   const userDoesNotHaveStakedMSCP = `
@@ -187,34 +188,6 @@ window.stakeMSCP = async function(){
   
   await window.MoonscapeBetaContract.methods
     .lock(window.sessionId)
-    .send({from: window.selectedAccount})
-    .on('transactionHash', (txIdResponse) => {
-      console.log('LOCK_TRANSACTION_HASH', txIdResponse);
-    })
-    .on('receipt', (receipt) => {
-      console.log('LOCK_RECEIPT', receipt);
-    })
-    .on('error', (error) => {
-      console.log('LOCK_ERROR', error);
-      return;
-    });
-
-  await checkStakedMSCP(); 
-}
-
-window.unStakeMSCP = async function(){
-  if(!window.userHasStakedMSCP) return;
-
-  if (!window.MoonscapeBetaContract) {
-    try {
-      window.MoonscapeBetaContract = await getContractAsync('MoonscapeBeta');
-    } catch (e) {
-      return;
-    }
-  }
-
-  await window.MoonscapeBetaContract.methods
-    .unlock(window.sessionId)
     .send({from: window.selectedAccount})
     .on('transactionHash', (txIdResponse) => {
       console.log('LOCK_TRANSACTION_HASH', txIdResponse);

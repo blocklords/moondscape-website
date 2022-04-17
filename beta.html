@@ -41,7 +41,7 @@
 
 <body class="body__bg bg_fixed" data-bgimg="assets/img/bg/body-bg3.svg">
     <!--header area start-->
-    <header class="header_section header_transparent beta_header">
+    <header id="header" class="header_section header_transparent beta_header">
       <div class="header_logo header_logo_position">
           <a class="sticky_none" href="index.html"><img src="assets/img/logo/logo.webp" alt=""></a>
       </div>
@@ -54,7 +54,7 @@
     <!--header area end-->
 
     <!-- page wrapper start -->
-    <div class="page_wrapper">
+    <div id = "page_wrapper" class="page_wrapper">
       <section>
         <div class="container">
           <div class="row">
@@ -88,7 +88,7 @@
           </div>
           <div id="play_game" class="row align-items-center">
             <div class="play_game_btn_disabled">
-              <a class="btn btn-link" href="#">Early Access</a>
+              <a class="btn btn-link" onClick="playGame()">Early Access</a>
             </div>
           </div>
         </div>

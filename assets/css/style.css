@@ -7763,3 +7763,21 @@ section.error_section {
   font-size: 14px;
   line-height: 18px;
 }
+
+.play_game_container {
+  min-height: 100vh;
+  background-color: black;
+  position: relative;
+}
+
+.iframe_style {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  max-width: 100%;
+  max-height: 97%;
+  aspect-ratio: 16 / 9;
+}

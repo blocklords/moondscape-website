@@ -70,10 +70,23 @@ window.checkCityNft = async function(){
 
   const playGameHtml = `
   <div class="play_game_btn${window.nftBalance < 1 || window.cityNftId < 1 || !window.userHasStakedMSCP ? '_disabled' : ''}">
-    <a class="btn btn-link" href="${window.nftBalance < 1 || window.cityNftId < 1 || !window.userHasStakedMSCP ? '#' : 'https://pre-play.moonscapegame.com/'}">Early Access</a>
+    <a class="btn btn-link" onClick="playGame()">Early Access</a>
   </div>
   `;
   $('#play_game').html(playGameHtml);
+}
+
+window.playGame = () => {
+  if( window.nftBalance < 1 || window.cityNftId < 1 || !window.userHasStakedMSCP ) return;
+  const playGameHtml = `
+  <div class="play_game_container">
+    <div class="iframe_style">
+      <iframe src="https://pre-play.moonscapegame.com/" width="100%" height="100%" ></iframe>
+    </div>
+  </div>
+  `;
+  $('#header').remove();
+  $('#page_wrapper').html(playGameHtml);
 }
 
 window.checkStakedMSCP = async function(){
@@ -127,7 +140,7 @@ window.checkStakedMSCP = async function(){
 
   const playGameHtml = `
   <div class="play_game_btn${window.nftBalance < 1 || window.cityNftId < 1 || !window.userHasStakedMSCP ? '_disabled' : ''}">
-    <a class="btn btn-link" href="${window.nftBalance < 1 || window.cityNftId < 1 || !window.userHasStakedMSCP ? '#' : 'https://pre-play.moonscapegame.com/'}">Early Access</a>
+    <a class="btn btn-link" onClick="playGame()">Early Access</a>
   </div>
   `;
   $('#play_game').html(playGameHtml);

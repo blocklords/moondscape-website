@@ -77,7 +77,7 @@ window.checkCityNft = async function(){
 }
 
 window.playGame = () => {
-  if( window.nftBalance < 1 || window.cityNftId < 1 || !window.userHasStakedMSCP ) return;
+  // if( window.nftBalance < 1 || window.cityNftId < 1 || !window.userHasStakedMSCP ) return;
   const playGameHtml = `
   <div class="play_game_container">
     <div class="iframe_style">

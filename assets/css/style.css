@@ -982,9 +982,9 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .new_btn .btn.btn-link {
-  background: url(../img/others/btn-signup-c.png);
+  background: url(../img/others/btn-signup.webp);
   font-size: 16px;
-  width: 250px;
+  width: 157px;
   height: 60px;
   line-height: 60px;
 }

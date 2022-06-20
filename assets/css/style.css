@@ -944,7 +944,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .sing_up_btn .btn.btn-link {
-  background: url(../img/others/btn-signup.webp);
+  background: url(../img/others/play-now.png);
   font-size: 16px;
   width: 157px;
   height: 60px;
@@ -966,7 +966,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .new_green_btn .btn.btn-link {
-  background: url(../img/others/btn-bg-c.png);
+  background: url(../img/others/updates-and-rewards.png);
   font-size: 16px;
   width: 250px;
   height: 60px;
@@ -982,7 +982,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .new_btn .btn.btn-link {
-  background: url(../img/others/btn-signup.webp);
+  background: url(../img/others/play-now.png);
   font-size: 16px;
   width: 157px;
   height: 60px;

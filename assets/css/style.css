@@ -944,9 +944,9 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .sing_up_btn .btn.btn-link {
-  background: url(../img/others/btn-signup.webp);
+  background: url(../img/others/btn-signup-c.png);
   font-size: 16px;
-  width: 157px;
+  width: 250px;
   height: 60px;
   line-height: 60px;
 }
@@ -965,6 +965,21 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   }
 }
 
+.new_btn .btn.btn-link {
+  background: url(../img/others/btn-signup-c.png);
+  font-size: 16px;
+  width: 250px;
+  height: 60px;
+  line-height: 60px;
+}
+
+.new_btn .btn.btn-link img {
+  margin-left: 8px;
+}
+
+.new_btn .btn.btn-link:hover img {
+  margin-left: 12px;
+}
 
 @media only screen and (max-width: 575px) {
   .header_logo {
@@ -1778,6 +1793,19 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     margin-bottom: 20px;
     line-height: 28px;
     margin-left: 0px;
+  }
+}
+
+.hero_content .buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}
+
+@media only screen and (max-width: 991px) {
+  .hero_content .buttons {
+    flex-direction: column;
+    gap:20px;
   }
 }
 

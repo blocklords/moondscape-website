@@ -965,6 +965,22 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   }
 }
 
+.new_green_btn .btn.btn-link {
+  background: url(../img/others/btn-bg-c.png);
+  font-size: 16px;
+  width: 250px;
+  height: 60px;
+  line-height: 60px;
+}
+
+.new_green_btn .btn.btn-link img {
+  margin-left: 8px;
+}
+
+.new_green_btn .btn.btn-link:hover img {
+  margin-left: 12px;
+}
+
 .new_btn .btn.btn-link {
   background: url(../img/others/btn-signup-c.png);
   font-size: 16px;
@@ -981,6 +997,10 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   margin-left: 12px;
 }
 
+.header_logo {
+  display: flex;
+  flex-direction: column;
+}
 @media only screen and (max-width: 575px) {
   .header_logo {
     width: 100%;
@@ -7096,9 +7116,10 @@ section.error_section {
 }
 
 .header_logo_position {
-  margin-top: 33px;
+  margin-top: 23px;
   margin-left: 48px;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
 }
 
 @-webkit-keyframes spin {

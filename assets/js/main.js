@@ -226,7 +226,7 @@ return await fetch(url, {method: "PUT", headers: {'Content-Type': 'application/j
 
 window.resetPassword = async function(){
 if(window.resetPasswordBtnDisabled) return;
-const response = await window.putAsync(`https://api.moonscapegame.com/api/v1/city/password-recovery/set-password`,{token: window.token, password:window.password});
+const response = await window.putAsync(`https://api.moonscapegame.com/password-recovery/set-password`,{token: window.token, password:window.password});
 console.log('response: ', response)
 const json = await response.json();
 console.log('json: ', json)

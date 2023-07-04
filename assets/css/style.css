@@ -7341,3 +7341,19 @@ section.error_section {
   max-height: 97%;
   aspect-ratio: 16 / 9;
 }
+
+.video-responsive{
+  overflow:hidden;
+  padding-bottom:56.25%;
+  position:relative;
+  height:0;
+  max-width: 80%;
+  margin: 0 auto;
+  }
+  .video-responsive iframe{
+  left:0;
+  top:0;
+  height:100%;
+  width:100%;
+  position:absolute;
+  }

@@ -226,7 +226,7 @@ window.putAsync = async function(url, data) {
 
 window.resetPassword = async function(){
   if(window.resetPasswordBtnDisabled) return;
-  const response = await window.putAsync(`https://pre-api.moonscapegame.com/api/v1/city/password-recovery/set-password`,{token: window.token, password:window.password});
+  const response = await window.putAsync(`https://beta-api.moonscapegame.com/password-recovery/set-password`,{token: window.token, password:window.password});
   console.log('response: ', response)
   const json = await response.json();
   console.log('json: ', json)

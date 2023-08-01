@@ -1356,6 +1356,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .footer_menu ul li a {
+  text-wrap: nowrap;
   line-height: 40px;
   color: #f3f3f3;
   display: inline-block;
